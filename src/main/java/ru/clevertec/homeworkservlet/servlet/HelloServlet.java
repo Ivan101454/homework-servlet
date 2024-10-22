@@ -1,4 +1,4 @@
-package ru.clevertec.homeworkservlet;
+package ru.clevertec.homeworkservlet.servlet;
 
 import java.io.*;
 
@@ -11,6 +11,7 @@ public class HelloServlet extends HttpServlet {
 
     public void init() {
         message = "Hello World!";
+
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
