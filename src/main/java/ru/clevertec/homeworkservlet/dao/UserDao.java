@@ -55,10 +55,10 @@ public class UserDao implements UserRepository {
 
     public Optional<User> findByLogin(String login) {
         @Cleanup var session = sessionFactory.openSession();
-        session.beginTransaction();
-        Optional<User> user = Optional.ofNullable(session.get(User.class, login));
-        session.getTransaction().commit();
-        return user;
+//        session.beginTransaction();
+//        Optional<User> user = Optional.ofNullable(session.get(User.class, login));
+        //        session.getTransaction().commit();
+        return Optional.ofNullable(session.createQuery("select u from User u where u.login = login", User.class).getResultList().getFirst());
     }
 
     @Override

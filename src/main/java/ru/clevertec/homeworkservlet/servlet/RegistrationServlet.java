@@ -17,7 +17,7 @@ public class RegistrationServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-    request.setAttribute("roles", List.of("USER, ADMIN", "USER"));
+    request.setAttribute("roles", List.of("USER", "ADMIN", "USER"));
     request.getRequestDispatcher(JspHelper.getPath("registration"))
             .forward(request, response);
     }

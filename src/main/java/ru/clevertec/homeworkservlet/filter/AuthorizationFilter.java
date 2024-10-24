@@ -12,7 +12,7 @@ import ru.clevertec.homeworkservlet.dto.UserDto;
 
 import java.io.IOException;
 import java.util.Set;
-@WebFilter("/list")
+@WebFilter("/*")
 public class AuthorizationFilter implements Filter {
 
     private final static Set<String> EXIST_PATH = Set.of("/registration", "/login", "/list");
@@ -23,8 +23,8 @@ public class AuthorizationFilter implements Filter {
         if(isExistPath(requestURI) || isUserLogged(servletRequest)) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            var referer = ((HttpServletRequest) servletRequest).getHeader("referer");
-            ((HttpServletResponse) servletResponse).sendRedirect(referer != null ? referer : "/login");
+//            var referer = ((HttpServletRequest) servletRequest).getHeader("referer");
+            ((HttpServletResponse) servletResponse).sendRedirect("/login");
         }
     }
 

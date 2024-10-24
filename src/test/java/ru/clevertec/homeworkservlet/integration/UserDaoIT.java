@@ -9,6 +9,8 @@ import ru.clevertec.homeworkservlet.enums.Role;
 import ru.clevertec.homeworkservlet.repository.UserRepository;
 import ru.clevertec.homeworkservlet.utils.HibernateUtil;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserDaoIT {
@@ -42,6 +44,18 @@ public class UserDaoIT {
 
         //then
         assertEquals(Role.ADMIN, updateUser.getRole());
+
+    }
+    @Test
+    void shouldFindUserByLogin() {
+        //given
+        String login = "ivan101";
+
+        //when
+        Optional<User> user = userRepository.findByLogin(login);
+
+        //then
+        assertEquals("12345", user.get().getPassword());
 
     }
 
