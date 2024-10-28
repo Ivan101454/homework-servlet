@@ -17,15 +17,19 @@ import java.util.Set;
 @WebFilter("/*")
 public class AuthorizationFilter implements Filter {
 
-    private final static Set<String> EXIST_PATH = Set.of("/registration", "/login", "/list");
+    private final static Set<String> EXIST_PATH = Set.of("/list", "/login", "/registration");
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String requestURI = ((HttpServletRequest) servletRequest).getRequestURI();
-        if(isExistPath(requestURI) || isUserLogged(servletRequest)) {
+        if(isExistPath(requestURI) && isUserLogged(servletRequest)) {
+            filterChain.doFilter(servletRequest, servletResponse);
+        } else if(requestURI.equals("/registration") && !isUserLogged(servletRequest)) {
+//            var referer = ((HttpServletRequest) servletRequest).getHeader("referer");
+            filterChain.doFilter(servletRequest, servletResponse);
+        } else if(requestURI.equals("/login") && !isUserLogged(servletRequest)) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-//            var referer = ((HttpServletRequest) servletRequest).getHeader("referer");
             ((HttpServletResponse) servletResponse).sendRedirect("/login");
         }
     }

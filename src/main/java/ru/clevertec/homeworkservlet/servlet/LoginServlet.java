@@ -11,7 +11,6 @@ import ru.clevertec.homeworkservlet.service.UserService;
 import ru.clevertec.homeworkservlet.utils.JspHelper;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Optional;
 
 @WebServlet("/login")
@@ -25,7 +24,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         Optional<UserDto> userByLogin = userService.getUserByLogin(login);

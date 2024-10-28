@@ -25,7 +25,10 @@ public class UserService {
     }
 
     public Optional<UserDto> getUserByLogin(String login) {
-        Optional<UserDto> userDto = userRepository.findByLogin(login).map(UserMapper.INSTANCE::userToUserDto);
-        return userDto;
+        return userRepository.findByLogin(login).map(UserMapper.INSTANCE::userToUserDto);
+    }
+
+    public void createUser(UserDto userDto) {
+        userRepository.create(UserMapper.INSTANCE.userDtoToUser(userDto));
     }
 }

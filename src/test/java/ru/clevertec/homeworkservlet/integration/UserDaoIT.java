@@ -49,13 +49,13 @@ public class UserDaoIT {
     @Test
     void shouldFindUserByLogin() {
         //given
-        String login = "ivan101";
+        String login = "petr111";
 
         //when
         Optional<User> user = userRepository.findByLogin(login);
 
         //then
-        assertEquals("12345", user.get().getPassword());
+        assertEquals("qwe", user.get().getPassword());
 
     }
 

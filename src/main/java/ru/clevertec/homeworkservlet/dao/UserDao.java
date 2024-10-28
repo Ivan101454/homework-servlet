@@ -4,6 +4,7 @@ import lombok.Cleanup;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import ru.clevertec.homeworkservlet.entities.User;
 import ru.clevertec.homeworkservlet.repository.UserRepository;
 
@@ -58,7 +59,10 @@ public class UserDao implements UserRepository {
 //        session.beginTransaction();
 //        Optional<User> user = Optional.ofNullable(session.get(User.class, login));
         //        session.getTransaction().commit();
-        return Optional.ofNullable(session.createQuery("select u from User u where u.login = login", User.class).getResultList().getFirst());
+        return Optional.ofNullable(session.createQuery(("select u from User u where u.login = ?1"), User.class)
+                .setParameter(1, login).getResultList().getFirst());
+
+
     }
 
     @Override
