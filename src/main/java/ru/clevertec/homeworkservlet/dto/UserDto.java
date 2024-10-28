@@ -15,4 +15,6 @@ public class UserDto {
     String login;
     String password;
     Role role;
+    int age;
+    String address;
 }
