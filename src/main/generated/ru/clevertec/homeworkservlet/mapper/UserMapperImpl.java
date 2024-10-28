@@ -6,7 +6,7 @@ import ru.clevertec.homeworkservlet.entities.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-24T23:32:27+0300",
+    date = "2024-10-28T23:19:09+0300",
     comments = "version: 1.6.2, compiler: javac, environment: Java 21.0.3 (Amazon.com Inc.)"
 )
 public class UserMapperImpl implements UserMapper {

@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import ru.clevertec.homeworkservlet.service.UserService;
 import ru.clevertec.homeworkservlet.utils.JspHelper;
 
+
 import java.io.IOException;
 
 @WebServlet("/list")

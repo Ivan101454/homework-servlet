@@ -21,7 +21,7 @@ public class UserServiceIT {
         UserService userService = new UserService();
         Optional<UserDto> userByLogin = userService.getUserByLogin("ivan101");
         System.out.println(userByLogin.get().toString());
-//        assertEquals("12345", userByLogin.get().getPassword());
+        assertEquals("12345", userByLogin.get().getPassword());
 
     }
 }
